@@ -41,7 +41,7 @@
         '');
       };
 
-      enable = mkEnableOption ${defaultPackageName};
+      enable = mkEnableOption defaultPackageName;
 
       luaPath = mkOption {
         default = luaPath;
