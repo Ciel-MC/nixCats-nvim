@@ -14,7 +14,7 @@
 
 { config, pkgs, lib, ... }@misc: {
 
-  options = with lib; {
+  options.programs = with lib; {
 
     ${defaultPackageName} = {
 
@@ -41,11 +41,7 @@
         '');
       };
 
-      enable = mkOption {
-        default = false;
-        type = types.bool;
-        description = "Enable ${defaultPackageName}";
-      };
+      enable = mkEnableOption ${defaultPackageName};
 
       luaPath = mkOption {
         default = luaPath;
