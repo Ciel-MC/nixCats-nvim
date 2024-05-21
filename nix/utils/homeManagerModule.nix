@@ -152,7 +152,7 @@
   };
 
   config = let
-    options_set = config.${defaultPackageName};
+    options_set = config.programs.${defaultPackageName};
     dependencyOverlays = oldDependencyOverlays // {
       ${pkgs.system} = [
         (utils.mergeOverlayLists
@@ -178,8 +178,8 @@
             then keepLuaBuilder else 
             builtins.throw "no lua or keepLua builder supplied to mkNixosModules"));
 
-      newNixpkgs = if config.${defaultPackageName}.nixpkgs_version != null
-        then config.${defaultPackageName}.nixpkgs_version else nixpkgs;
+      newNixpkgs = if config.programs.${defaultPackageName}.nixpkgs_version != null
+        then config.programs.${defaultPackageName}.nixpkgs_version else nixpkgs;
 
     in (builtins.map (catName:
       newLuaBuilder {
